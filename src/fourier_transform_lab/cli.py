@@ -13,7 +13,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("outputs/demo_spectrum.png"),
+        default=Path("docs/figures/demo_spectrum.png"),
         help="Path for the generated figure.",
     )
     args = parser.parse_args()

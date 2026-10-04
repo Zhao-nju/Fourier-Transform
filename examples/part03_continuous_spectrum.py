@@ -39,7 +39,7 @@ def main() -> None:
     axes[1].set_ylabel("Amplitude")
     axes[1].grid(True, alpha=0.25)
 
-    output = Path("outputs/part03_continuous_spectrum.png")
+    output = Path("docs/figures/part03_continuous_spectrum.png")
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=180)
     plt.close(fig)
@@ -48,4 +48,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

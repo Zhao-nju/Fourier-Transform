@@ -109,7 +109,7 @@ pytest
 ## Generate the Demo Figure
 
 ```bash
-conda run -n meteoro python -m fourier_transform_lab.cli --output outputs/demo_spectrum.png
+conda run -n meteoro python -m fourier_transform_lab.cli --output docs/figures/demo_spectrum.png
 ```
 
 所有示例图的标题、坐标轴、图例和标注均使用英文，并设置 Arial 字体，便于论文、报告或课程展示中复用。

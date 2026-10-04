@@ -1,4 +1,4 @@
-# Part 5: 大气科学简单应用案例
+# Part 5: 简单应用案例
 
 Fourier transformation 在大气科学中常用于识别不同时间尺度或空间尺度上的变化。
 
@@ -48,4 +48,8 @@ conda run -n meteoro python examples/part05_atmospheric_case.py
 - 对纬向风做频率谱分析
 - 对二维空间场做 wave-number spectrum
 - 对湍流速度做 energy spectrum
+
+
+
+趣味案例，《我爱你中国》《月光奏鸣曲第一乐章》的p(t)序列进行FFT分析
 

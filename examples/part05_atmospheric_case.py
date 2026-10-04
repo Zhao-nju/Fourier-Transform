@@ -52,7 +52,7 @@ def main() -> None:
     axes[1].legend()
     axes[1].grid(True, alpha=0.25, which="both")
 
-    output = Path("outputs/part05_atmospheric_case.png")
+    output = Path("docs/figures/part05_atmospheric_case.png")
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=180)
     plt.close(fig)
@@ -61,4 +61,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

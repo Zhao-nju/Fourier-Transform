@@ -11,7 +11,7 @@ from .plotting import set_english_plot_style
 from .transforms import power_spectrum
 
 
-def generate_demo(output_path: str | Path = "outputs/demo_spectrum.png") -> Path:
+def generate_demo(output_path: str | Path = "docs/figures/demo_spectrum.png") -> Path:
     sample_rate = 256.0
     duration = 1.0
     time = np.arange(0.0, duration, 1.0 / sample_rate)
