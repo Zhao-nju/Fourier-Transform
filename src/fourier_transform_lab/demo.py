@@ -7,6 +7,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
+from .plotting import set_english_plot_style
 from .transforms import power_spectrum
 
 
@@ -22,14 +23,7 @@ def generate_demo(output_path: str | Path = "outputs/demo_spectrum.png") -> Path
 
     freq, power = power_spectrum(signal, sample_rate)
 
-    plt.rcParams.update(
-        {
-            "font.family": "Arial",
-            "axes.titlesize": 13,
-            "axes.labelsize": 11,
-            "legend.fontsize": 10,
-        }
-    )
+    set_english_plot_style()
 
     fig, axes = plt.subplots(2, 1, figsize=(9, 6), constrained_layout=True)
 
@@ -51,4 +45,3 @@ def generate_demo(output_path: str | Path = "outputs/demo_spectrum.png") -> Path
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
-
