@@ -1,11 +1,11 @@
 # Fourier Transform Lab
 
-这是一个面向学习、展示和复现实验的 Fourier transformation GitHub 项目。
+这是一个面向学习、展示和复现实验的 Fourier transform GitHub 项目。
 
 项目主线不是单纯封装一个 FFT 工具包，而是围绕五个循序渐进的 part 组织：
 
-1. **Fourier transformation 简介**
-2. **散点序列的 Fourier transformation**
+1. **Fourier transform 简介**
+2. **散点序列的 Fourier transform**
 3. **连续函数的 FT 以及 spectrum**
 4. **Python 工具使用**
 5. **大气科学简单应用案例**
@@ -17,13 +17,19 @@
 ```text
 fourier-transform-lab/
 ├── docs/
+│   ├── figures/
+│   │   ├── part01_chord.png
+│   │   ├── part01_stull_842.png
+│   │   └── part02_q_spectrum.png
 │   ├── part01_intro.md
-│   ├── part02_discrete_sequence.md
+│   ├── part02_dft.md
 │   ├── part03_continuous_function_spectrum.md
 │   ├── part04_python_tools.md
 │   └── part05_atmospheric_case.md
 ├── examples/
-│   ├── generate_demo.py
+│   ├── 1-chord.py
+│   ├── 1-stull-842.py
+│   ├── 2-spectrum.py
 │   ├── part02_discrete_sequence.py
 │   ├── part03_continuous_spectrum.py
 │   └── part05_atmospheric_case.py
@@ -33,31 +39,43 @@ fourier-transform-lab/
 │   ├── demo.py
 │   ├── plotting.py
 │   └── transforms.py
-├── tests/
-│   └── test_transforms.py
-└── .github/workflows/tests.yml
+└── tests/
+    └── test_transforms.py
 ```
 
 ## Study Path
 
-### Part 1: Fourier Transformation 简介
+### Part 1: Fourier Transform 简介
 
-目标是建立直觉：Fourier transformation 将信号从“时间/空间域”改写到“频率/波数域”，回答一个核心问题：
+目标是建立直觉：Fourier transform 将信号从“时间/空间域”改写到“频率/波数域”，回答一个核心问题：
 
 > 一个复杂变化中，包含哪些周期或尺度的成分？
 
+这一部分从 do-mi-sol 三和弦开始，说明复杂声音可以看成多个 pressure signals 的叠加；随后用 Stull 第 8.4.2 节的比湿序列例子，展示离散信号如何由 cosine 和 sine 成分重建。
+
 入口文档：[docs/part01_intro.md](docs/part01_intro.md)
-
-### Part 2: 散点序列的 Fourier Transformation
-
-这里讨论真实数据中最常见的形式：有限长度、离散采样的序列。重点包括 DFT、FFT、频率 bin、采样间隔、Nyquist frequency 和谱峰解释。
-
-入口文档：[docs/part02_discrete_sequence.md](docs/part02_discrete_sequence.md)
 
 运行示例：
 
 ```bash
-conda run -n meteoro python examples/part02_discrete_sequence.py
+conda run -n meteoro python examples/1-chord.py
+conda run -n meteoro python examples/1-stull-842.py
+```
+
+### Part 2: 散点序列的 Fourier Transform
+
+这一部分讨论有限长度、离散采样序列的 DFT。主线从一个问题开始：
+
+> 为什么只用 cosine 不能表示一般离散序列，为什么还需要 sine？
+
+随后引入 DFT 公式、周期延拓、Fourier coefficient、spectrum、Nyquist frequency，以及 cosine/sine 作为 frequency basis 的线性代数解释。最后通过 Stull 比湿序列画出 amplitude spectrum 和去均值后的 power spectrum。
+
+入口文档：[docs/part02_dft.md](docs/part02_dft.md)
+
+运行示例：
+
+```bash
+conda run -n meteoro python examples/2-spectrum.py
 ```
 
 ### Part 3: 连续函数的 FT 以及 Spectrum
@@ -69,12 +87,12 @@ conda run -n meteoro python examples/part02_discrete_sequence.py
 运行示例：
 
 ```bash
-conda run -n meteoro python examples/part03_continuous_spectrum.py
+PYTHONPATH=src conda run -n meteoro python examples/part03_continuous_spectrum.py
 ```
 
 ### Part 4: Python 工具使用
 
-这一部分说明如何用 `numpy.fft`、本项目的教学实现和 Matplotlib 完成基础频谱分析，并解释常见坑：频率轴、归一化、单边谱、采样率、窗函数和去趋势。
+这一部分说明如何用 `numpy.fft`、本项目的教学实现和 Matplotlib 完成基础频谱分析，并解释常见问题：频率轴、归一化、单边谱、采样率、窗函数和去趋势。
 
 入口文档：[docs/part04_python_tools.md](docs/part04_python_tools.md)
 
@@ -87,29 +105,19 @@ conda run -n meteoro python examples/part03_continuous_spectrum.py
 运行示例：
 
 ```bash
-conda run -n meteoro python examples/part05_atmospheric_case.py
+PYTHONPATH=src conda run -n meteoro python examples/part05_atmospheric_case.py
 ```
 
-## Install and Test
+## Run Tests
 
 ```bash
-conda run -n meteoro python -m pip install -e ".[dev]"
-conda run -n meteoro python -m pytest
-```
-
-也可以使用普通 Python 环境：
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -e ".[dev]"
-pytest
+PYTHONPATH=src conda run -n meteoro python -m pytest
 ```
 
 ## Generate the Demo Figure
 
 ```bash
-conda run -n meteoro python -m fourier_transform_lab.cli --output docs/figures/demo_spectrum.png
+PYTHONPATH=src conda run -n meteoro python -m fourier_transform_lab.cli --output docs/figures/demo_spectrum.png
 ```
 
 所有示例图的标题、坐标轴、图例和标注均使用英文，并设置 Arial 字体，便于论文、报告或课程展示中复用。
@@ -118,7 +126,7 @@ conda run -n meteoro python -m fourier_transform_lab.cli --output docs/figures/d
 
 这个仓库适合用来做：
 
-- Fourier transformation 入门项目
+- Fourier transform 入门项目
 - 课程展示材料
 - 气象/大气科学中频谱分析的最小示例
 - Python FFT 工具使用模板
