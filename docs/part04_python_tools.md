@@ -1,49 +1,71 @@
 # Part 4: Python 中的 `numpy.fft`
 
-实际做 Fourier analysis 时，最常用的工具是 NumPy 中的 `numpy.fft` 模块。Part 4 不再开发新的项目工具，而是专门说明如何使用 `numpy.fft`，以及如何解释它的输出。
+## 4.1 函数综述
+
+做 Fourier analysis 时，最常用的工具是 NumPy 中的 `numpy.fft` 模块，具体细节可以参考https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html
+
+### FFTs
+
+| [`fft`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html#numpy.fft.fft)(a, n, axis, norm, out) | Compute the one-dimensional discrete Fourier Transform.      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`ifft`](https://numpy.org/doc/stable/reference/generated/numpy.fft.ifft.html#numpy.fft.ifft)(a, n, axis, norm, out) | Compute the one-dimensional inverse discrete Fourier Transform. |
+| [`fft2`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fft2.html#numpy.fft.fft2)(a, s, axes, norm, out) | Compute the 2-dimensional discrete Fourier Transform.        |
+| [`ifft2`](https://numpy.org/doc/stable/reference/generated/numpy.fft.ifft2.html#numpy.fft.ifft2)(a, s, axes, norm, out) | Compute the 2-dimensional inverse discrete Fourier Transform. |
+| [`fftn`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fftn.html#numpy.fft.fftn)(a, s, axes, norm, out) | Compute the N-dimensional discrete Fourier Transform.        |
+| [`ifftn`](https://numpy.org/doc/stable/reference/generated/numpy.fft.ifftn.html#numpy.fft.ifftn)(a, s, axes, norm, out) | Compute the N-dimensional inverse discrete Fourier Transform. |
 
 
 
-## 4.1 基本流程
+### Real FFTs
 
-假设我们有一个等间隔采样的时间序列：
+包括rfft(a[, n, axis, norm, out]), irfft(a[, n, axis, norm, out]), rfft2等一系列函数
 
-\[
-x_0,x_1,\ldots,x_{N-1}.
-\]
+针对具有Hermitian symmetry的序列（i.e., a real spectrum.）具有hfft, hrfft函数
 
-采样间隔为 \(\Delta t\)，采样频率为：
 
-\[
-f_s=\frac{1}{\Delta t}.
-\]
 
-用 NumPy 计算 FFT 的基本流程是：
+
+### Helper routines
+
+| [`fftfreq`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fftfreq.html#numpy.fft.fftfreq)(n, d, device) | Return the Discrete Fourier Transform sample frequencies.    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`rfftfreq`](https://numpy.org/doc/stable/reference/generated/numpy.fft.rfftfreq.html#numpy.fft.rfftfreq)(n, d, device) | Return the Discrete Fourier Transform sample frequencies (for usage with rfft, irfft). |
+| [`fftshift`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fftshift.html#numpy.fft.fftshift)(x, axes) | Shift the zero-frequency component to the center of the spectrum. |
+| [`ifftshift`](https://numpy.org/doc/stable/reference/generated/numpy.fft.ifftshift.html#numpy.fft.ifftshift)(x, axes) | The inverse of [`fftshift`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fftshift.html#numpy.fft.fftshift). |
+
+
+
+##  4.2 numpy.fft.fft
+
+- fft.**fft**(*a*, *n=None*, *axis=-1*, *norm=None*, *out=None*)
+
+  This function computes the one-dimensional *n*-point discrete Fourier Transform (DFT).
+  
+  Parameters:
+  
+  * **a** array_likeInput array, can be complex.
+  
+  * **n** int, optional Length of the transformed axis of the output. .
+  * **axis** int, optional Axis over which to compute the FFT. If not given, the last axis is used.
+  * **norm**{“backward”, “ortho”, “forward”}, optional Normalization mode (see [`numpy.fft`](https://numpy.org/doc/stable/reference/routines.fft.html#module-numpy.fft)). Default is “backward”. Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.
+
+​	Returns:
+
+​	**out** complex ndarray
+
+
+
+以下为1个简单的案例：
 
 ```python
-import numpy as np
+q = np.array([8, 9, 9, 6, 10, 3, 5, 6])
 
-dt = 0.25
-t = np.arange(0, 64, dt)
-x = np.sin(2 * np.pi * 0.5 * t)
-
-X = np.fft.fft(x)
-freq = np.fft.fftfreq(x.size, d=dt)
+f = np.fft.fft(q, norm='forward')
 ```
 
-其中：
 
-- `x` 是原始序列
-- `X` 是 complex Fourier coefficients
-- `freq` 是每个 Fourier coefficient 对应的 frequency
-- `d=dt` 表示相邻采样点之间的间隔
-
-
-
-## 4.2 `fft` 和 `fftfreq`
 
 `np.fft.fft(x)` 返回的频率顺序不是从负频率到正频率，而是：
-
 \[
 0,\ 1,\ 2,\ldots,\frac{N}{2},\ -\frac{N}{2}+1,\ldots,-1
 \]
@@ -51,14 +73,17 @@ freq = np.fft.fftfreq(x.size, d=dt)
 对应的物理频率由 `np.fft.fftfreq` 给出：
 
 ```python
-X = np.fft.fft(x)
-freq = np.fft.fftfreq(len(x), d=dt)
+n = 8
+freq = np.fft.fftfreq(len(f), d=1.0/8.0)
+# 0.  1.  2.  3. -4. -3. -2. -1.
 ```
+
+
 
 如果想画 two-sided spectrum，可以直接画：
 
 ```python
-amplitude = np.abs(X) / len(x)
+amplitude = np.abs(f) / len(f)
 
 plt.plot(freq, amplitude)
 ```
@@ -69,8 +94,16 @@ plt.plot(freq, amplitude)
 freq_shifted = np.fft.fftshift(freq)
 amplitude_shifted = np.fft.fftshift(amplitude)
 
-plt.plot(freq_shifted, amplitude_shifted)
+plt.plot(freq_shifted, amplitude_shifted) # [-4., -3., -2., -1.,  0.,  1.,  2.,  3.]
 ```
+
+这里的关键是：DFT frequency index 是周期性的，满足 \(k\equiv k-N\)。因此对于 \(N=8\)：
+
+\[
+7\equiv 7-8=-1.
+\]
+
+所以 \(k=7\) 并不是高频信号，而是等价于 \(k=-1\)，也就是最低阶的负频率。真正达到 Nyquist frequency 的最高频率是 \(k=4\)。在 full two-sided `fftfreq` 里，Nyquist 项通常显示为 \(-4\)；在 one-sided `rfftfreq` 里，它显示为 \(+4\)。
 
 
 
@@ -82,8 +115,24 @@ plt.plot(freq_shifted, amplitude_shifted)
 
 ```python
 X = np.fft.rfft(x)
-freq = np.fft.rfftfreq(len(x), d=dt)
+freq = np.fft.rfftfreq(len(x))
 ```
+
+对于同一个实数序列，`np.fft.fft(x)` 和 `np.fft.rfft(x)` 在 non-negative frequency 上给出相同的 Fourier coefficients。区别只是：
+
+- `fft` 返回完整的 two-sided result，包括正频率和负频率
+- `rfft` 利用实数序列的 Hermitian symmetry，只返回 one-sided result
+
+可以这样理解：
+
+```python
+X_full = np.fft.fft(x)
+X_one = np.fft.rfft(x)
+
+np.allclose(X_full[: len(X_one)], X_one)
+```
+
+对于 real-valued input，上面的结果应为 `True`。因此，`rfft` 不是另一种不同的 Fourier transform，而是 `fft` 在实数输入情形下的精简输出。
 
 `rfft` 只返回：
 
@@ -126,7 +175,7 @@ amplitude[1:-1] *= 2
 ```python
 amplitude = np.abs(X) / len(x)
 
-if len(x) % 2 == 0:
+if len(q) % 2 == 0:
     amplitude[1:-1] *= 2
 else:
     amplitude[1:] *= 2
@@ -139,12 +188,9 @@ else:
 Power spectrum 常用于表示不同频率对 variance 或 energy 的贡献。一个简单写法是：
 
 ```python
-X = np.fft.rfft(x)
-freq = np.fft.rfftfreq(len(x), d=dt)
+power = np.abs(f) ** 2
 
-power = (np.abs(X) ** 2) / len(x) ** 2
-
-if len(x) % 2 == 0:
+if len(q) % 2 == 0:
     power[1:-1] *= 2
 else:
     power[1:] *= 2
@@ -246,7 +292,7 @@ f=0.5,\qquad f=2.0.
 
 ## 4.9 小结
 
-NumPy FFT 的核心函数很少：
+NumPy FFT 的核心函数：
 
 - `np.fft.fft`: 计算完整 complex FFT
 - `np.fft.fftfreq`: 生成完整频率轴
