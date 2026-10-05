@@ -51,7 +51,7 @@ x(t)=\frac{4}{\pi}\left[
 对应示例脚本：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python scripts/3-square-wave.py
+python scripts/3-square-wave.py
 ```
 
 ![Square wave reconstructed from odd sine harmonics](figures/part03_square_wave.png)
@@ -185,6 +185,10 @@ R(\tau)=\int_0^\infty E(\omega)\cos(\omega\tau)\,d\omega.
 
 
 
+我们将在Part5利用观测数据，实现对\(\overline{u^{\prime 2}}\) 能谱的分析
+
+
+
 ## 3.6 数值计算：连续理论到离散实现
 
 计算机不能直接处理无限长连续函数，所以实际计算时仍然要回到离散近似：
@@ -203,14 +207,14 @@ R(\tau)=\int_0^\infty E(\omega)\cos(\omega\tau)\,d\omega.
 
 
 
-## 3.7 一个典型例子：Gaussian
+## 3.7 求解连续函数FT典型例子：Gaussian
 
 Gaussian 函数的 Fourier transform 仍然是 Gaussian。这使它成为检验连续 FT 数值近似的好例子。
 
 运行示例：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python scripts/part03_continuous_spectrum.py
+python scripts/3_continuous_spectrum.py
 ```
 
 ![Gaussian function and numerical amplitude spectrum](figures/part03_continuous_spectrum.png)
@@ -218,11 +222,3 @@ PYTHONPATH=src conda run -n meteoro python scripts/part03_continuous_spectrum.py
 **Fig. 5.** Numerical Fourier transform of a sampled Gaussian function.
 
 
-
-## 3.8 小结
-
-1. 周期函数可以写成 Fourier series，例如 square wave 可以写成 odd sine harmonics 的和。
-2. 非周期连续函数用 Fourier transform 表示为连续频率上的积分叠加。
-3. Spectrum 描述 amplitude、power 或 variance 如何分布在不同频率上。
-4. 对 stationary turbulent signal，autocorrelation \(R(\tau)\) 和 spectrum \(S(\omega)\) 是 Fourier transform pair。
-5. \(R(0)=\overline{u'^2}\) 表明 spectrum 的积分对应 fluctuation variance。

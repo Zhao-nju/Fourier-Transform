@@ -10,9 +10,9 @@ This repository is a learning-oriented Fourier transform project. It is organize
 2. **Part 2: Fourier transform of discrete sequences**
 3. **Part 3: Continuous functions, Fourier transform, and spectrum**
 4. **Part 4: Python usage with `numpy.fft`**
-5. **Part 5: A simple atmospheric-science example**
+5. **Part 5: TKE spectrum from 10 Hz eddy-covariance wind data**
 
-Parts 1-4 have been substantially revised. Part 5 remains a simple application example that can be expanded later.
+Parts 1-5 now form a complete first pass through Fourier-transform concepts, NumPy FFT usage, and a simple turbulence-spectrum application.
 
 ## Repository Structure
 
@@ -35,17 +35,8 @@ fourier-transform-lab/
 │   ├── 1-stull-842.py
 │   ├── 2-spectrum.py
 │   ├── 3-square-wave.py
-│   ├── generate_demo.py
-│   ├── part02_discrete_sequence.py
-│   ├── part03_continuous_spectrum.py
-│   └── part05_atmospheric_case.py
-├── src/
-│   ├── cli.py
-│   ├── demo.py
-│   ├── plotting.py
-│   └── transforms.py
-└── tests/
-    └── test_transforms.py
+│   ├── 3_continuous_spectrum.py
+│   └── 5_atmospheric_case.py
 ```
 
 ## Part 1: Introduction
@@ -57,8 +48,8 @@ Part 1 builds the basic intuition: a complex signal can be decomposed into simpl
 Reproduce the figures:
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python scripts/1-chord.py
-PYTHONPATH=src conda run -n meteoro python scripts/1-stull-842.py
+conda run -n meteoro python scripts/1-chord.py
+conda run -n meteoro python scripts/1-stull-842.py
 ```
 
 ## Part 2: Discrete Sequences and DFT
@@ -70,7 +61,7 @@ Part 2 focuses on finite, discrete sequences. It explains why cosine terms alone
 Reproduce the spectrum figure:
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python scripts/2-spectrum.py
+conda run -n meteoro python scripts/2-spectrum.py
 ```
 
 ## Part 3: Continuous Functions and Spectrum
@@ -82,8 +73,8 @@ Part 3 moves from Fourier series to continuous Fourier transform. It includes th
 Reproduce the figures:
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python scripts/3-square-wave.py
-PYTHONPATH=src conda run -n meteoro python scripts/part03_continuous_spectrum.py
+conda run -n meteoro python scripts/3-square-wave.py
+conda run -n meteoro python scripts/3_continuous_spectrum.py
 ```
 
 ## Part 4: Python Usage with `numpy.fft`
@@ -92,26 +83,20 @@ Entry document: [docs/part04_python_tools.md](docs/part04_python_tools.md)
 
 Part 4 explains how to use NumPy's FFT routines, including `fft`, `fftfreq`, `fftshift`, `rfft`, and `rfftfreq`. It also discusses two-sided and one-sided spectra, normalization with `norm="forward"` and `norm="backward"`, amplitude spectrum, power spectrum, and PSD.
 
-## Part 5: Atmospheric Example
+## Part 5: TKE Spectrum from Eddy-Covariance Data
 
 Entry document: [docs/part05_atmospheric_case.md](docs/part05_atmospheric_case.md)
 
-Part 5 uses a synthetic near-surface temperature time series to show how Fourier spectrum can identify diurnal and synoptic-scale variability.
+Part 5 uses local 10 Hz eddy-covariance wind data to compute the TKE spectrum. It compares a direct FFT estimate with a spectrum obtained from the TKE autocovariance \(R_{TKE}(\tau)\), illustrating the Wiener-Khinchin connection between autocovariance and spectrum.
 
 Reproduce the figure:
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python scripts/part05_atmospheric_case.py
-```
-
-## Run Tests
-
-```bash
-PYTHONPATH=src conda run -n meteoro python -m pytest
+conda run -n meteoro python scripts/5_atmospheric_case.py
 ```
 
 ## Notes
 
 - Figures use English labels, legends, and annotations.
-- Plot fonts are set to Arial through `src/plotting.py`.
+- Plot fonts are set to Arial inside each plotting script.
 - `trial/` is ignored and is not intended for upload.

@@ -7,8 +7,18 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from plotting import set_english_plot_style
-from transforms import fft, fftfreq
+
+def set_english_plot_style() -> None:
+    plt.rcParams.update(
+        {
+            "font.family": "Arial",
+            "axes.titlesize": 13,
+            "axes.labelsize": 11,
+            "legend.fontsize": 10,
+            "xtick.labelsize": 10,
+            "ytick.labelsize": 10,
+        }
+    )
 
 
 def main() -> None:
@@ -19,8 +29,8 @@ def main() -> None:
     function = np.exp(-(time**2) / (2 * sigma**2))
 
     shifted = np.fft.ifftshift(function)
-    spectrum = np.fft.fftshift(fft(shifted)) * dt
-    freq = np.fft.fftshift(fftfreq(n, d=dt))
+    spectrum = np.fft.fftshift(np.fft.fft(shifted)) * dt
+    freq = np.fft.fftshift(np.fft.fftfreq(n, d=dt))
     amplitude = np.abs(spectrum)
 
     set_english_plot_style()

@@ -8,7 +8,18 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 import numpy as np
 
-from plotting import set_english_plot_style
+
+def set_english_plot_style() -> None:
+    plt.rcParams.update(
+        {
+            "font.family": "Arial",
+            "axes.titlesize": 13,
+            "axes.labelsize": 11,
+            "legend.fontsize": 10,
+            "xtick.labelsize": 10,
+            "ytick.labelsize": 10,
+        }
+    )
 
 
 def main() -> None:

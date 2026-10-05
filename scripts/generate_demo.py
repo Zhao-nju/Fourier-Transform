@@ -1,9 +1,0 @@
-"""Generate a simple signal and Fourier spectrum demo image."""
-
-from __future__ import annotations
-
-from demo import generate_demo
-
-
-if __name__ == "__main__":
-    print(generate_demo())
