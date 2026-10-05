@@ -20,16 +20,19 @@ fourier-transform-lab/
 │   ├── figures/
 │   │   ├── part01_chord.png
 │   │   ├── part01_stull_842.png
-│   │   └── part02_q_spectrum.png
+│   │   ├── part02_q_spectrum.png
+│   │   ├── part03_square_wave.png
+│   │   └── part03_continuous_spectrum.png
 │   ├── part01_intro.md
 │   ├── part02_dft.md
-│   ├── part03_continuous_function_spectrum.md
+│   ├── part03_function_ft.md
 │   ├── part04_python_tools.md
 │   └── part05_atmospheric_case.md
 ├── examples/
 │   ├── 1-chord.py
 │   ├── 1-stull-842.py
 │   ├── 2-spectrum.py
+│   ├── 3-square-wave.py
 │   ├── part02_discrete_sequence.py
 │   ├── part03_continuous_spectrum.py
 │   └── part05_atmospheric_case.py
@@ -58,8 +61,8 @@ fourier-transform-lab/
 运行示例：
 
 ```bash
-conda run -n meteoro python examples/1-chord.py
-conda run -n meteoro python examples/1-stull-842.py
+PYTHONPATH=src conda run -n meteoro python examples/1-chord.py
+PYTHONPATH=src conda run -n meteoro python examples/1-stull-842.py
 ```
 
 ### Part 2: 散点序列的 Fourier Transform
@@ -75,24 +78,25 @@ conda run -n meteoro python examples/1-stull-842.py
 运行示例：
 
 ```bash
-conda run -n meteoro python examples/2-spectrum.py
+PYTHONPATH=src conda run -n meteoro python examples/2-spectrum.py
 ```
 
 ### Part 3: 连续函数的 FT 以及 Spectrum
 
-这里从连续函数出发，解释连续 Fourier transform、数值离散化近似、amplitude spectrum、power spectrum 和 Parseval 关系的物理意义。
+这里从连续函数出发，解释 Fourier series、continuous Fourier transform、correlation function、amplitude spectrum 和 power spectrum 的物理意义。
 
-入口文档：[docs/part03_continuous_function_spectrum.md](docs/part03_continuous_function_spectrum.md)
+入口文档：[docs/part03_function_ft.md](docs/part03_function_ft.md)
 
 运行示例：
 
 ```bash
+PYTHONPATH=src conda run -n meteoro python examples/3-square-wave.py
 PYTHONPATH=src conda run -n meteoro python examples/part03_continuous_spectrum.py
 ```
 
 ### Part 4: Python 工具使用
 
-这一部分说明如何用 `numpy.fft`、本项目的教学实现和 Matplotlib 完成基础频谱分析，并解释常见问题：频率轴、归一化、单边谱、采样率、窗函数和去趋势。
+这一部分说明如何用 `numpy.fft` 完成基础频谱分析，并解释常见问题：频率轴、归一化、单边谱、采样率、窗函数和去趋势。
 
 入口文档：[docs/part04_python_tools.md](docs/part04_python_tools.md)
 
@@ -114,27 +118,8 @@ PYTHONPATH=src conda run -n meteoro python examples/part05_atmospheric_case.py
 PYTHONPATH=src conda run -n meteoro python -m pytest
 ```
 
-## Generate the Demo Figure
+## Notes
 
-```bash
-PYTHONPATH=src conda run -n meteoro python -m fourier_transform_lab.cli --output docs/figures/demo_spectrum.png
-```
-
-所有示例图的标题、坐标轴、图例和标注均使用英文，并设置 Arial 字体，便于论文、报告或课程展示中复用。
-
-## Project Scope
-
-这个仓库适合用来做：
-
-- Fourier transform 入门项目
-- 课程展示材料
-- 气象/大气科学中频谱分析的最小示例
-- Python FFT 工具使用模板
-
-如果后续要扩展，可以继续加入：
-
-- notebook 版本讲义
-- 真实观测数据案例
-- 2-D Fourier transform 和空间谱分析
-- turbulence energy spectrum 示例
-- wavelet transform 对比章节
+- 文档和图是这个项目的主体，代码主要用于复现图和检查计算。
+- 所有示例图的标题、坐标轴、图例和标注均使用英文，并设置 Arial 字体。
+- 当前 Part 1 和 Part 2 已完成主要内容整理，后续可以继续细化 Part 3-5。

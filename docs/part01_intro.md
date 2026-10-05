@@ -1,6 +1,6 @@
 # Part 1: An introduction to Fourier transform
 
-The **Fourier transform** (**FT**) is an integral transform that takes a function as input and outputs another function that describes the extent to which various frequencies are present in the original function. The output of the transform is a complex valued function of frequency. The term *Fourier transform* refers to both the mathematical operation and to this complex-valued function. When a distinction needs to be made, the output of the operation is sometimes called the frequency domain representation of the original function. The Fourier transform is analogous to decomposing the sound of a musical chord into the intensities of its constituent pitches. (from Wikipedia)
+The **Fourier transform** (**FT**) is an integral transform that takes a function as input and outputs another function that describes the extent to which various frequencies are present in the original function. The output of the transform is a **complex valued function of frequency**. The term *Fourier transform* refers to both the mathematical operation and to this complex-valued function. When a distinction needs to be made, the output of the operation is sometimes called the frequency domain representation of the original function. The Fourier transform is analogous to decomposing the sound of a musical chord into the intensities of its constituent pitches. (from Wikipedia)
 
 
 
@@ -37,7 +37,7 @@ f_C=261.6\text{ Hz},\quad f_E=329.6\text{ Hz},\quad f_G=392.0\text{ Hz}.
 p(t)=A_C\sin(2\pi f_C t)+A_E\sin(2\pi f_E t)+A_G\sin(2\pi f_G t).
 \]
 
-我们听到的是叠加后的复杂波形，麦克风在记录声音信号时，也只能获取气压的时间序列；Fourier transform 要做的事情，是从这个复杂波形中重新识别出接近 \(261.6\text{ Hz}\)、\(329.6\text{ Hz}\)、\(392.0\text{ Hz}\) 的频率成分，如同把混合后的不同颜色的颜料进行分离。
+我们听到的是叠加后的复杂波形，而麦克风在记录声音信号时，也只能获取气压的时间序列；Fourier transform 要做的事情，是从这个复杂波形中重新识别出接近 \(261.6\text{ Hz}\)、\(329.6\text{ Hz}\)、\(392.0\text{ Hz}\) 的频率成分，如同把混合后的不同颜色的颜料进行分离。
 
 对应示例脚本：
 
@@ -51,7 +51,7 @@ python examples/1-chord.py
 
 
 
-该个例进行了简化，未考虑C-G信号的相位差异；以及在演奏乐器时产生的谐波（比如在钢琴上弹C4对应的键，琴弦振动后不只有261.6 Hz，还会有261.6 Hz整数倍的谐波），真实频谱会对应3个基频峰+每个基频的一系列谐波峰
+该个例进行了简化，未考虑C-G信号的相位差异；以及在演奏乐器时产生的谐波（比如在钢琴上弹C4对应的键，琴弦振动后不只有261.6 Hz，还会有261.6 Hz整数倍频率的谐波），真实频谱会对应3个基频峰+每个基频的一系列谐波峰
 
 
 
@@ -76,7 +76,7 @@ An introduction to boundary layer meteorology 第 8.4.2 节给了一个很适合
 | Time (UTC) | 1200 | 1215 | 1230 | 1245 | 1300 | 1315 | 1330 | 1345 |
 | \(q\) (g kg\(^{-1}\)) | 8 | 9 | 9 | 6 | 10 | 3 | 5 | 6 |
 
-这里 \(N=8\)，\(\Delta t=15\) min，总时长为 \(P=N\Delta t=2\) h。采用 Stull 的归一化约定，forward DFT 写成：
+这里 \(N=8\)，\(\Delta t=15\) min，总时长为 \(P=N\Delta t=2\) h。Forward DFT 可以写作：
 
 \[
 F(n)=\frac{1}{N}\sum_{k=0}^{N-1}A(k)e^{-i\frac{2\pi nk}{N}}
@@ -89,7 +89,7 @@ F(n)=\frac{1}{N}\sum_{k=0}^{N-1}A(k)\cos\left(\frac{2\pi nk}{N}\right)
 -i\frac{1}{N}\sum_{k=0}^{N-1}A(k)\sin\left(\frac{2\pi nk}{N}\right).
 \]
 
-得到的 8 个 Fourier 系数为：
+经计算后得到的 8 个 Fourier 系数为：
 
 | \(n\) | \(F(n)\) |
 | --- | --- |
@@ -102,10 +102,11 @@ F(n)=\frac{1}{N}\sum_{k=0}^{N-1}A(k)\cos\left(\frac{2\pi nk}{N}\right)
 | 6 | \(0.5\) |
 | 7 | \(0.28+1.03i\) |
 
-其中 \(F(0)=7.0\) 是原始序列的平均值。因为原始 \(q(k)\) 是实数序列，所以高频一半的系数与低频一半的系数互为 complex conjugate。
+其中 \(F(0)=7.0\) 是原始序列的平均值。因为原始 \(A(k)\) 是实数序列，所以高频一半的系数与低频一半的系数互为 complex conjugate.
 
-inverse transform 可以写成：
 
+
+Inverse transform 可以写成：
 \[
 A(k)=\sum_{n=0}^{N-1}F(n)e^{i \frac{2\pi nk}{N}}
 \]
