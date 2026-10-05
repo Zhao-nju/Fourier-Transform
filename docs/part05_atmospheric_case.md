@@ -160,7 +160,7 @@ R_u(\tau)+R_v(\tau)+R_w(\tau)
 ## 5.5 Run the example
 
 ```bash
-conda run -n meteoro python scripts/5_atmospheric_case.py
+python scripts/5_atmospheric_case.py
 ```
 
 Output:

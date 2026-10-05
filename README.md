@@ -48,8 +48,8 @@ Part 1 builds the basic intuition: a complex signal can be decomposed into simpl
 Reproduce the figures:
 
 ```bash
-conda run -n meteoro python scripts/1-chord.py
-conda run -n meteoro python scripts/1-stull-842.py
+python scripts/1-chord.py
+python scripts/1-stull-842.py
 ```
 
 ## Part 2: Discrete Sequences and DFT
@@ -61,7 +61,7 @@ Part 2 focuses on finite, discrete sequences. It explains why cosine terms alone
 Reproduce the spectrum figure:
 
 ```bash
-conda run -n meteoro python scripts/2-spectrum.py
+python scripts/2-spectrum.py
 ```
 
 ## Part 3: Continuous Functions and Spectrum
@@ -73,8 +73,8 @@ Part 3 moves from Fourier series to continuous Fourier transform. It includes th
 Reproduce the figures:
 
 ```bash
-conda run -n meteoro python scripts/3-square-wave.py
-conda run -n meteoro python scripts/3_continuous_spectrum.py
+python scripts/3-square-wave.py
+python scripts/3_continuous_spectrum.py
 ```
 
 ## Part 4: Python Usage with `numpy.fft`
@@ -92,7 +92,7 @@ Part 5 uses local 10 Hz eddy-covariance wind data to compute the TKE spectrum. I
 Reproduce the figure:
 
 ```bash
-conda run -n meteoro python scripts/5_atmospheric_case.py
+python scripts/5_atmospheric_case.py
 ```
 
 ## Notes

@@ -42,7 +42,7 @@ p(t)=A_C\sin(2\pi f_C t)+A_E\sin(2\pi f_E t)+A_G\sin(2\pi f_G t).
 对应示例脚本：
 
 ```bash
-conda run -n meteoro python scripts/1-chord.py
+python scripts/1-chord.py
 ```
 
 ![C major chord pressure signals](figures/part01_chord.png)
@@ -114,7 +114,7 @@ A(k)=\sum_{n=0}^{N-1}F(n)e^{i \frac{2\pi nk}{N}}
 对应示例脚本：
 
 ```bash
-conda run -n meteoro python scripts/1-stull-842.py
+python scripts/1-stull-842.py
 ```
 
 ![Stull section 8.4.2 DFT reconstruction](figures/part01_stull_842.png)
