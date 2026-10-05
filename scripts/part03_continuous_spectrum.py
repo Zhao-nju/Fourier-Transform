@@ -7,8 +7,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from fourier_transform_lab import fft, fftfreq
-from fourier_transform_lab.plotting import set_english_plot_style
+from plotting import set_english_plot_style
+from transforms import fft, fftfreq
 
 
 def main() -> None:

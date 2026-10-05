@@ -7,7 +7,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from fourier_transform_lab.plotting import set_english_plot_style
+from plotting import set_english_plot_style
 
 
 def square_wave_series(theta: np.ndarray, max_harmonic: int) -> np.ndarray:

@@ -28,7 +28,7 @@ fourier-transform-lab/
 │   ├── part03_function_ft.md
 │   ├── part04_python_tools.md
 │   └── part05_atmospheric_case.md
-├── examples/
+├── scripts/
 │   ├── 1-chord.py
 │   ├── 1-stull-842.py
 │   ├── 2-spectrum.py
@@ -36,8 +36,7 @@ fourier-transform-lab/
 │   ├── part02_discrete_sequence.py
 │   ├── part03_continuous_spectrum.py
 │   └── part05_atmospheric_case.py
-├── src/fourier_transform_lab/
-│   ├── __init__.py
+├── src/
 │   ├── cli.py
 │   ├── demo.py
 │   ├── plotting.py
@@ -61,8 +60,8 @@ fourier-transform-lab/
 运行示例：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python examples/1-chord.py
-PYTHONPATH=src conda run -n meteoro python examples/1-stull-842.py
+PYTHONPATH=src conda run -n meteoro python scripts/1-chord.py
+PYTHONPATH=src conda run -n meteoro python scripts/1-stull-842.py
 ```
 
 ### Part 2: 散点序列的 Fourier Transform
@@ -78,7 +77,7 @@ PYTHONPATH=src conda run -n meteoro python examples/1-stull-842.py
 运行示例：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python examples/2-spectrum.py
+PYTHONPATH=src conda run -n meteoro python scripts/2-spectrum.py
 ```
 
 ### Part 3: 连续函数的 FT 以及 Spectrum
@@ -90,8 +89,8 @@ PYTHONPATH=src conda run -n meteoro python examples/2-spectrum.py
 运行示例：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python examples/3-square-wave.py
-PYTHONPATH=src conda run -n meteoro python examples/part03_continuous_spectrum.py
+PYTHONPATH=src conda run -n meteoro python scripts/3-square-wave.py
+PYTHONPATH=src conda run -n meteoro python scripts/part03_continuous_spectrum.py
 ```
 
 ### Part 4: Python 工具使用
@@ -109,7 +108,7 @@ PYTHONPATH=src conda run -n meteoro python examples/part03_continuous_spectrum.p
 运行示例：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python examples/part05_atmospheric_case.py
+PYTHONPATH=src conda run -n meteoro python scripts/part05_atmospheric_case.py
 ```
 
 ## Run Tests

@@ -244,7 +244,7 @@ Fourier 系数 \(F(n)\) 是复数。\(F(n)\) 同时包含：
 对应示例脚本：
 
 ```bash
-python examples/2-spectrum.py
+python scripts/2-spectrum.py
 ```
 
 ![Spectrum of the Stull specific-humidity sequence](figures/part02_q_spectrum.png)

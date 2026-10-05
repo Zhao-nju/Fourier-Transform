@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 import numpy as np
 
-from fourier_transform_lab.plotting import set_english_plot_style
+from plotting import set_english_plot_style
 
 
 def main() -> None:

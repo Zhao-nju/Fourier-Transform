@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from fourier_transform_lab import convolution_fft, dft, fft, fftfreq, idft, ifft, power_spectrum
+from transforms import convolution_fft, dft, fft, fftfreq, idft, ifft, power_spectrum
 
 
 def test_dft_matches_numpy_fft() -> None:
@@ -48,4 +48,3 @@ def test_convolution_fft_matches_numpy_convolve() -> None:
 def test_empty_input_raises_value_error() -> None:
     with pytest.raises(ValueError):
         fft([])
-

@@ -7,8 +7,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .plotting import set_english_plot_style
-from .transforms import power_spectrum
+from plotting import set_english_plot_style
+from transforms import power_spectrum
 
 
 def generate_demo(output_path: str | Path = "docs/figures/demo_spectrum.png") -> Path:

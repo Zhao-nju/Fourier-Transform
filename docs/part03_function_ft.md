@@ -51,7 +51,7 @@ x(t)=\frac{4}{\pi}\left[
 对应示例脚本：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python examples/3-square-wave.py
+PYTHONPATH=src conda run -n meteoro python scripts/3-square-wave.py
 ```
 
 ![Square wave reconstructed from odd sine harmonics](figures/part03_square_wave.png)
@@ -210,7 +210,7 @@ Gaussian 函数的 Fourier transform 仍然是 Gaussian。这使它成为检验�
 运行示例：
 
 ```bash
-PYTHONPATH=src conda run -n meteoro python examples/part03_continuous_spectrum.py
+PYTHONPATH=src conda run -n meteoro python scripts/part03_continuous_spectrum.py
 ```
 
 ![Gaussian function and numerical amplitude spectrum](figures/part03_continuous_spectrum.png)

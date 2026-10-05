@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from fourier_transform_lab.demo import generate_demo
+from demo import generate_demo
 
 
 if __name__ == "__main__":

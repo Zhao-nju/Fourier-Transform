@@ -34,7 +34,7 @@ temperature = background + diurnal cycle + synoptic variation + noise
 ## 5.3 运行示例
 
 ```bash
-conda run -n meteoro python examples/part05_atmospheric_case.py
+PYTHONPATH=src conda run -n meteoro python scripts/part05_atmospheric_case.py
 ```
 
 输出图包含时间序列和 period spectrum。图中文字为英文，便于直接用于报告。
@@ -52,4 +52,3 @@ conda run -n meteoro python examples/part05_atmospheric_case.py
 
 
 趣味案例，《我爱你中国》《月光奏鸣曲第一乐章》的p(t)序列进行FFT分析
-
