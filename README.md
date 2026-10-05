@@ -1,6 +1,6 @@
 # Fourier Transform Lab
 
-这是一个用于学习 Fourier transform 的教学项目，重点是用清晰的文字、公式和 Python 图示理解频率分解、DFT、连续 Fourier transform 和 `numpy.fft` 的使用。
+这是一个用于学习 Fourier transform 的教学项目，使读者理解频率分解、DFT、连续 Fourier transform 和 `numpy.fft` 的使用。
 
 This repository is a learning-oriented Fourier transform project. It is organized as a set of short tutorial parts rather than a standalone FFT package. The code is mainly used to reproduce figures, verify calculations, and support the explanations in the documents.
 
@@ -94,9 +94,3 @@ Reproduce the figure:
 ```bash
 python scripts/5_atmospheric_case.py
 ```
-
-## Notes
-
-- Figures use English labels, legends, and annotations.
-- Plot fonts are set to Arial inside each plotting script.
-- `trial/` is ignored and is not intended for upload.
