@@ -111,7 +111,7 @@ Fourier transform 的结果 \(F(\omega)\) 本身还不是我们通常画出来�
 
 
 
-## 3.4 用 correlation function 理解 spectrum
+## 3.4 Correlation function
 
 Nieuwstadt et al. (2015) Chapter 9 提供了一个很适合大气湍流的角度：从 time correlation function 出发理解 spectrum。
 

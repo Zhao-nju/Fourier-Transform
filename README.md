@@ -10,9 +10,8 @@ This repository is a learning-oriented Fourier transform project. It is organize
 2. **Part 2: Fourier transform of discrete sequences**
 3. **Part 3: Continuous functions, Fourier transform, and spectrum**
 4. **Part 4: Python usage with `numpy.fft`**
-5. **Part 5: TKE spectrum from 10 Hz eddy-covariance wind data**
 
-Parts 1-5 now form a complete first pass through Fourier-transform concepts, NumPy FFT usage, and a simple turbulence-spectrum application.
+Parts 1-4 form a first pass through Fourier-transform concepts, discrete and continuous spectra, and practical NumPy FFT usage.
 
 ## Repository Structure
 
@@ -28,15 +27,13 @@ fourier-transform-lab/
 │   ├── part01_intro.md
 │   ├── part02_dft.md
 │   ├── part03_function_ft.md
-│   ├── part04_python_tools.md
-│   └── part05_atmospheric_case.md
+│   └── part04_python_tools.md
 ├── scripts/
 │   ├── 1-chord.py
 │   ├── 1-stull-842.py
 │   ├── 2-spectrum.py
 │   ├── 3-square-wave.py
-│   ├── 3_continuous_spectrum.py
-│   └── 5_atmospheric_case.py
+│   └── 3_continuous_spectrum.py
 ```
 
 ## Part 1: Introduction
@@ -82,15 +79,3 @@ python scripts/3_continuous_spectrum.py
 Entry document: [docs/part04_python_tools.md](docs/part04_python_tools.md)
 
 Part 4 explains how to use NumPy's FFT routines, including `fft`, `fftfreq`, `fftshift`, `rfft`, and `rfftfreq`. It also discusses two-sided and one-sided spectra, normalization with `norm="forward"` and `norm="backward"`, amplitude spectrum, power spectrum, and PSD.
-
-## Part 5: TKE Spectrum from Eddy-Covariance Data
-
-Entry document: [docs/part05_atmospheric_case.md](docs/part05_atmospheric_case.md)
-
-Part 5 uses local 10 Hz eddy-covariance wind data to compute the TKE spectrum. It compares a direct FFT estimate with a spectrum obtained from the TKE autocovariance \(R_{TKE}(\tau)\), illustrating the Wiener-Khinchin connection between autocovariance and spectrum.
-
-Reproduce the figure:
-
-```bash
-python scripts/5_atmospheric_case.py
-```
