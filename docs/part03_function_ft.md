@@ -3,7 +3,7 @@
 Part 2 讨论的是有限长度离散序列。实际问题中，我们也经常先从连续函数出发：
 
 $$
-f(t),\qquad -\infty<t<\infty.
+f(t),\qquad -\infty \lt t \lt \infty.
 $$
 
 连续函数的 Fourier transform 仍然是在回答同一个问题：
@@ -23,8 +23,8 @@ $$
 $$
 x(t)=
 \begin{cases}
--1, & -\pi<t<0,\\
-1, & 0<t<\pi,
+-1, & -\pi \lt t \lt 0,\\
+1, & 0 \lt t \lt \pi,
 \end{cases}
 \qquad x(t+2\pi)=x(t).
 $$
