@@ -66,6 +66,7 @@ f = np.fft.fft(q, norm='forward')
 
 
 `np.fft.fft(x)` 返回的频率顺序不是从负频率到正频率，而是：
+
 $$
 0,\ 1,\ 2,\ldots,\frac{N}{2},\ -\frac{N}{2}+1,\ldots,-1
 $$
