@@ -35,6 +35,8 @@
 
 
 
+<br>
+
 ##  4.2 numpy.fft.fft
 
 - fft.**fft**(*a*, *n=None*, *axis=-1*, *norm=None*, *out=None*)
