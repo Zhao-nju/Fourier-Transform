@@ -2,6 +2,8 @@
 
 ## 4.1 函数综述
 
+<br>
+
 做 Fourier analysis 时，最常用的工具是 NumPy 中的 `numpy.fft` 模块，具体细节可以参考https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html
 
 ### FFTs
@@ -109,6 +111,8 @@ $$
 
 ## 4.3 实数信号：`rfft` 和 `rfftfreq`
 
+<br>
+
 大多数观测时间序列都是 real-valued signal。对于实数信号，负频率部分和正频率部分是共轭对称的，因此通常只需要看 non-negative frequencies。
 
 这时可以使用：
@@ -152,6 +156,8 @@ $$
 
 ## 4.4 Amplitude spectrum
 
+<br>
+
 如果只想看每个频率成分的 amplitude，可以计算：
 
 ```python
@@ -185,6 +191,8 @@ else:
 
 ## 4.5 Power spectrum
 
+<br>
+
 Power spectrum 常用于表示不同频率对 variance 或 energy 的贡献。一个简单写法是：
 
 ```python
@@ -207,6 +215,8 @@ x_anom = x - np.mean(x)
 
 
 ## 4.6 Power spectral density
+
+<br>
 
 Power spectrum 和 power spectral density 不完全一样。
 
@@ -233,6 +243,8 @@ psd = power / (freq[1] - freq[0])
 
 
 ## 4.7 一个完整例子
+
+<br>
 
 下面的例子构造一个包含两个周期成分的 signal：
 
@@ -276,6 +288,8 @@ $$
 
 ## 4.8 常见问题
 
+<br>
+
 做 FFT 时最容易出错的是 frequency axis 和 normalization。
 
 常见检查包括：
@@ -291,6 +305,8 @@ $$
 
 
 ## 4.9 小结
+
+<br>
 
 NumPy FFT 的核心函数：
 

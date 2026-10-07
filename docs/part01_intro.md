@@ -12,6 +12,8 @@ Fourier transformation 的核心思想是：把一个在时间或空间中变化
 
 ## 1.1 从周期分解开始
 
+<br>
+
 很多复杂信号都可以看成不同周期（频率）成分的叠加。例如，一个时间序列可能同时包含：
 
 - 快速振荡
@@ -56,6 +58,8 @@ python scripts/1-chord.py
 
 
 ## 1.2 常见形式
+
+<br>
 
 Fourier analysis 常见有三种层次：
 
@@ -124,6 +128,8 @@ python scripts/1-stull-842.py
 
 
 ## 1.3 频率域能回答什么问题
+
+<br>
 
 Fourier spectrum 可以帮助回答：
 

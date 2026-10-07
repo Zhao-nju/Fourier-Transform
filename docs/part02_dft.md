@@ -24,6 +24,8 @@ Part 1 已经展示了这个序列可以表示为**不同cosine, sine function�
 
 ## 2.1 只用 cosine 能否表示这个信号？
 
+<br>
+
 先假设只用 cosine terms：
 
 $$
@@ -91,6 +93,8 @@ $$
 
 
 ## 2.2 DFT
+
+<br>
 
 ### 2.2.1 变换公式
 
@@ -164,6 +168,8 @@ $$
 
 ## 2.3 理解 Fourier 系数 F(n)
 
+<br>
+
 ### 2.3.1 共轭对
 
 对 $q=[8,9,9,6,10,3,5,6]$，得到：
@@ -211,6 +217,8 @@ Any nonzero wave amplitudes and spectral energies in the "true" signal **at freq
 
 ## 2.4 从 Fourier 系数到 spectrum
 
+<br>
+
 Fourier 系数 $F(n)$ 是复数。$F(n)$ 同时包含：
 
 - amplitude information
@@ -254,6 +262,8 @@ python scripts/2-spectrum.py
 
 
 ## 2.5 理解 DFT 的本质
+
+<br>
 
 前面的 $q$ 例子已经说明：一个离散序列可以通过 cosine 和 sine 的线性组合表示；Fourier coefficient 可以进一步转化为 spectrum；通过分析 spectrum，我们可以获悉不同频率成分的强度，以及它们对方差或能量的贡献。
 
