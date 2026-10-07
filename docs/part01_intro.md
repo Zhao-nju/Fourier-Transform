@@ -28,7 +28,7 @@ Fourier transformation 的作用就是把这些成分分离到频率坐标上。
 一个最简单的例子是 do-mi-sol 三和弦。3个音(C4, E4, G4)对应的频率为：
 
 $$
-f_C=261.6\text{ Hz},\quad f_E=329.6\text{ Hz},\quad f_G=392.0\text{ Hz}.
+f_C=261.6\ \mathrm{Hz},\quad f_E=329.6\ \mathrm{Hz},\quad f_G=392.0\ \mathrm{Hz}.
 $$
 
 在时间域中，三个音的 pressure signal 可以简单写成：
@@ -37,7 +37,7 @@ $$
 p(t)=A_C\sin(2\pi f_C t)+A_E\sin(2\pi f_E t)+A_G\sin(2\pi f_G t).
 $$
 
-我们听到的是叠加后的复杂波形，而麦克风在记录声音信号时，也只能获取气压的时间序列；Fourier transform 要做的事情，是从这个复杂波形中重新识别出接近 $261.6\text{ Hz}$、$329.6\text{ Hz}$、$392.0\text{ Hz}$ 的频率成分，如同把混合后的不同颜色的颜料进行分离。
+我们听到的是叠加后的复杂波形，而麦克风在记录声音信号时，也只能获取气压的时间序列；Fourier transform 要做的事情，是从这个复杂波形中重新识别出接近 261.6 Hz、329.6 Hz、392.0 Hz 的频率成分，如同把混合后的不同颜色的颜料进行分离。
 
 对应示例脚本：
 
@@ -76,7 +76,7 @@ An introduction to boundary layer meteorology 第 8.4.2 节给了一个很适合
 | Time (UTC) | 1200 | 1215 | 1230 | 1245 | 1300 | 1315 | 1330 | 1345 |
 | q (g kg<sup>-1</sup>) | 8 | 9 | 9 | 6 | 10 | 3 | 5 | 6 |
 
-这里 $N=8$，$\Delta t=15$ min，总时长为 $P=N\Delta t=2$ h。Forward DFT 可以写作：
+这里 $N=8$，$\Delta t = 15\ \mathrm{min}$，总时长为 $P=N\Delta t=2\ \mathrm{h}$。Forward DFT 可以写作：
 
 $$
 F(n)=\frac{1}{N}\sum_{k=0}^{N-1}A(k)e^{-i\frac{2\pi nk}{N}}
