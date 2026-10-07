@@ -16,8 +16,6 @@ $$
 
 ## 3.1 从 Fourier series 到 Fourier transform
 
-<br>
-
 如果函数是周期函数，最自然的表示方式是 Fourier series。也就是说，一个周期函数可以写成许多 sine/cosine harmonics 的线性组合。
 
 一个很经典的例子是 50% duty cycle、关于原点奇对称的 square wave。把它定义在 $[-\pi,\pi]$ 上，并延拓到实数域 $\mathbb{R}$：
@@ -66,11 +64,9 @@ python scripts/3-square-wave.py
 
 因为方波有非常陡的跳变。低频只能描述缓慢变化，要拼出“突然从 -1 跳到 +1”的尖锐边缘，就必须加入越来越高的频率。
 
-
+<br>
 
 ## 3.2 Fourier transform
-
-<br>
 
 Fourier series 适合周期函数。对于非周期函数，我们不再把信号看成一组离散 harmonics 的和，而是看成连续频率上的积分叠加。
 
@@ -99,11 +95,9 @@ $$
 
 所以看到文献中使用 $f$、$\nu$、$\omega$ 时，需要先确认它用的是 frequency 还是 angular frequency。
 
-
+<br>
 
 ## 3.3 Continuous spectrum
-
-<br>
 
 Fourier transform 的结果 $F(\omega)$ 本身还不是我们通常画出来的 spectrum。常见谱量包括：
 
@@ -115,11 +109,9 @@ Fourier transform 的结果 $F(\omega)$ 本身还不是我们通常画出来的 
 
 但对湍流或大气变量而言，信号往往不是几个完美周期的叠加，而是许多尺度共同作用的结果。这时 spectrum 往往更接近连续分布。低频通常对应 long time scale 或 large-scale structure；高频通常对应 short time scale 或 small-scale structure。
 
-
+<br>
 
 ## 3.4 Correlation function
-
-<br>
 
 Nieuwstadt et al. (2015) Chapter 9 提供了一个很适合大气湍流的角度：从 time correlation function 出发理解 spectrum。
 
@@ -195,11 +187,9 @@ $$
 
 后续应用案例可以利用观测数据，实现对 $\overline{u^{\prime 2}}$ 能谱的分析。
 
-
+<br>
 
 ## 3.6 数值计算：连续理论到离散实现
-
-<br>
 
 计算机不能直接处理无限长连续函数，所以实际计算时仍然要回到离散近似：
 
@@ -215,11 +205,9 @@ $$
 - 离散频率间隔由总记录长度决定
 - 是否去均值会显著影响低频和 $n=0$ 成分
 
-
+<br>
 
 ## 3.7 求解连续函数FT典型例子：Gaussian
-
-<br>
 
 Gaussian 函数的 Fourier transform 仍然是 Gaussian。这使它成为检验连续 FT 数值近似的好例子。
 

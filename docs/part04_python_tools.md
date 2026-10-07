@@ -2,8 +2,6 @@
 
 ## 4.1 函数综述
 
-<br>
-
 做 Fourier analysis 时，最常用的工具是 NumPy 中的 `numpy.fft` 模块，具体细节可以参考https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html
 
 ### FFTs
@@ -107,11 +105,9 @@ $$
 
 所以 $k=7$ 并不是高频信号，而是等价于 $k=-1$，也就是最低阶的负频率。真正达到 Nyquist frequency 的最高频率是 $k=4$。在 full two-sided `fftfreq` 里，Nyquist 项通常显示为 $-4$；在 one-sided `rfftfreq` 里，它显示为 $+4$。
 
-
+<br>
 
 ## 4.3 实数信号：`rfft` 和 `rfftfreq`
-
-<br>
 
 大多数观测时间序列都是 real-valued signal。对于实数信号，负频率部分和正频率部分是共轭对称的，因此通常只需要看 non-negative frequencies。
 
@@ -152,11 +148,9 @@ $$
 
 这就是 one-sided spectrum 的常用计算方式。
 
-
+<br>
 
 ## 4.4 Amplitude spectrum
-
-<br>
 
 如果只想看每个频率成分的 amplitude，可以计算：
 
@@ -187,11 +181,9 @@ else:
     amplitude[1:] *= 2
 ```
 
-
+<br>
 
 ## 4.5 Power spectrum
-
-<br>
 
 Power spectrum 常用于表示不同频率对 variance 或 energy 的贡献。一个简单写法是：
 
@@ -212,11 +204,9 @@ x_anom = x - np.mean(x)
 
 否则 $f=0$ 处的 mean component 可能很大，会压低其它频率成分在图中的可见性。
 
-
+<br>
 
 ## 4.6 Power spectral density
-
-<br>
 
 Power spectrum 和 power spectral density 不完全一样。
 
@@ -240,11 +230,9 @@ psd = power / (freq[1] - freq[0])
 - 比较不同频率 bin 的强弱：power spectrum 通常够用
 - 比较不同采样长度或不同频率分辨率的数据：PSD 更合适
 
-
+<br>
 
 ## 4.7 一个完整例子
-
-<br>
 
 下面的例子构造一个包含两个周期成分的 signal：
 
@@ -284,11 +272,9 @@ $$
 f=0.5,\qquad f=2.0.
 $$
 
-
+<br>
 
 ## 4.8 常见问题
-
-<br>
 
 做 FFT 时最容易出错的是 frequency axis 和 normalization。
 
@@ -302,11 +288,9 @@ $$
 - 采样频率是否足够高，Nyquist frequency 是否覆盖目标频率
 - 是否需要 window function 来降低 spectral leakage
 
-
+<br>
 
 ## 4.9 小结
-
-<br>
 
 NumPy FFT 的核心函数：
 

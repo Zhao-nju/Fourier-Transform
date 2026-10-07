@@ -24,8 +24,6 @@ Part 1 已经展示了这个序列可以表示为**不同cosine, sine function�
 
 ## 2.1 只用 cosine 能否表示这个信号？
 
-<br>
-
 先假设只用 cosine terms：
 
 $$
@@ -90,11 +88,9 @@ $$
 
 从物理直觉看，sine 的作用也可以理解为对相位信息的补充（辅助角公式）。同一个频率的波，如果开始位置不同，只用 cosine 很难表示；加入 sine 后，就可以表示任意相位。
 
-
+<br>
 
 ## 2.2 DFT
-
-<br>
 
 ### 2.2.1 变换公式
 
@@ -164,11 +160,9 @@ $$
 
 因此，DFT 的结果描述的不是一个孤立片段，而是这个片段周期重复后的频率结构。采样点之间的连续曲线只是这种周期延拓下的 Fourier reconstruction，并不一定代表真实大气变量在两个观测时刻之间的实际变化。
 
-
+<br>
 
 ## 2.3 理解 Fourier 系数 F(n)
-
-<br>
 
 ### 2.3.1 共轭对
 
@@ -213,11 +207,9 @@ e.g. The n = 6 signal was folded into the n=2 frequency.
 
 Any nonzero wave amplitudes and spectral energies in the "true" signal **at frequencies higher than the Nyquist frequency are folded back and added** to the energies of the "true" signal at the lower frequencies, yielding an aliased (and erroneous) spectrum.
 
-
+<br>
 
 ## 2.4 从 Fourier 系数到 spectrum
-
-<br>
 
 Fourier 系数 $F(n)$ 是复数。$F(n)$ 同时包含：
 
@@ -259,11 +251,9 @@ python scripts/2-spectrum.py
 
 **Fig. 3.** Amplitude spectrum and mean-removed power spectrum of the Stull specific-humidity sequence.
 
-
+<br>
 
 ## 2.5 理解 DFT 的本质
-
-<br>
 
 前面的 $q$ 例子已经说明：一个离散序列可以通过 cosine 和 sine 的线性组合表示；Fourier coefficient 可以进一步转化为 spectrum；通过分析 spectrum，我们可以获悉不同频率成分的强度，以及它们对方差或能量的贡献。
 
