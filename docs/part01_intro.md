@@ -76,7 +76,7 @@ An introduction to boundary layer meteorology 第 8.4.2 节给了一个很适合
 | Time (UTC) | 1200 | 1215 | 1230 | 1245 | 1300 | 1315 | 1330 | 1345 |
 | q (g kg<sup>-1</sup>) | 8 | 9 | 9 | 6 | 10 | 3 | 5 | 6 |
 
-这里 $N=8$， $\Delta t = 15\,\mathrm{min}$，总时长为 $P=N\Delta t=2\,\mathrm{h}$。Forward DFT 可以写作：
+这里 $N=8$， $\Delta t = 15\ \mathrm{min}$，总时长为 $P=N\Delta t=2\ \mathrm{h}$。Forward DFT 可以写作：
 
 $$
 F(n)=\frac{1}{N}\sum_{k=0}^{N-1}A(k)e^{-i\frac{2\pi nk}{N}}
