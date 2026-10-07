@@ -212,14 +212,14 @@ Any nonzero wave amplitudes and spectral energies in the "true" signal **at freq
 
 ## 2.4 从 Fourier 系数到 spectrum
 
-Fourier 系数 $F(n)$ 是复数。$F(n)$ 同时包含：
+Fourier 系数 $F(n)$ 是复数。 $F(n)$ 同时包含：
 
 - amplitude information
 - phase information
 
 如果我们只想知道“哪个频率的振幅更大”，就需要把 complex coefficient 转换成 spectrum。
 
-常见定义包括 amplitude spectrum，即 $|F(n)|=\sqrt{F_{\mathrm{real}}^2(n)+F_{\mathrm{imag}}^2(n)}$，以及 power spectrum，即 $S(n)=|F(n)|^2$。注意这里$F_{\mathrm{imag}}(n)$ 取的是虚部，虚部是一个实数 (3 + 2i的虚部为2，而不是2i)
+常见定义包括 amplitude spectrum，即 $|F(n)|=\sqrt{F_{\mathrm{real}}^2(n)+F_{\mathrm{imag}}^2(n)}$，以及 power spectrum，即 $S(n)=|F(n)|^2$。注意这里 $F_{\mathrm{imag}}(n)$ 取的是虚部，虚部是一个实数 (3 + 2i 的虚部为 2，而不是 2i)
 
 针对我们之前对比湿 $q$ 进行 DFT 得到的 $F(n)$，我们可以计算各个频率下的振幅：
 
@@ -240,7 +240,7 @@ Fourier 系数 $F(n)$ 是复数。$F(n)$ 同时包含：
 
 因此通常只看 $0\le n\le N/2$ 的 single-sided spectrum。
 
-需要注意，$n=0$ 是平均值。如果直接画 power spectrum，mean 通常会占据很大的能量，使其它频率成分不容易看清。因此实际分析中常先去除平均值，再画 $n>0$ 的 spectrum。
+需要注意， $n=0$ 是平均值。如果直接画 power spectrum，mean 通常会占据很大的能量，使其它频率成分不容易看清。因此实际分析中常先去除平均值，再画 $n>0$ 的 spectrum。
 
 对应示例脚本：
 
@@ -262,13 +262,13 @@ python scripts/2-spectrum.py
 
 ### 2.5.1 平面直角坐标系与基向量
 
-在二维直角坐标系中，我们常用单位向量 $\mathbf{i}$、$\mathbf{j}$ 作为基向量。任意二维向量都可以写成：
+在二维直角坐标系中，我们常用单位向量 $\mathbf{i}$、 $\mathbf{j}$ 作为基向量。任意二维向量都可以写成：
 
 $$
 \mathbf{x}=x_1\mathbf{i}+x_2\mathbf{j}.
 $$
 
-其中 $x_1$、$x_2$ 是 $\mathbf{x}$ 在两个正交方向上的投影。由于：
+其中 $x_1$、 $x_2$ 是 $\mathbf{x}$ 在两个正交方向上的投影。由于：
 
 $$
 \mathbf{i}\cdot\mathbf{j}=0,
@@ -290,7 +290,7 @@ $$
 
 
 
-因为 $\mathbf{i}$ 和 $\mathbf{j}$ 都是单位向量：$\mathbf{r} \cdot \mathbf{i}=4,\qquad \mathbf{r}\cdot\mathbf{j}=3$
+因为 $\mathbf{i}$ 和 $\mathbf{j}$ 都是单位向量： $\mathbf{r} \cdot \mathbf{i}=4,\qquad \mathbf{r}\cdot\mathbf{j}=3$
 
 点乘可以告诉我们：原向量在某个基向量方向上有多少分量。
 
@@ -304,7 +304,7 @@ $$
 \mathbf{A}=(A(0),A(1),\ldots,A(N-1)).
 $$
 
-为了表示这个向量，我们不再使用 $\mathbf{i}$、$\mathbf{j}$，而是选择一组由不同频率的 cosine 和 sine 构成的基底：
+为了表示这个向量，我们不再使用 $\mathbf{i}$、 $\mathbf{j}$，而是选择一组由不同频率的 cosine 和 sine 构成的基底：
 
 $$
 \cos\left(\frac{2\pi nk}{N}\right),\qquad
@@ -476,7 +476,7 @@ $$
 F(n)=\frac{1}{N}\sum_{k=0}^{N-1}A(k)g_n(k).
 $$
 
-因此，$F(n)$ 衡量的是原始序列 $A(k)$ 与频率为 $n$ 的 sine/cosine wave 有多相似。DFT 使用一整组正交的 sine/cosine templates，所以得到的是一组互相独立的频率投影。
+因此， $F(n)$ 衡量的是原始序列 $A(k)$ 与频率为 $n$ 的 sine/cosine wave 有多相似。DFT 使用一整组正交的 sine/cosine templates，所以得到的是一组互相独立的频率投影。
 
 
 

@@ -42,7 +42,7 @@ $$
 
 这里有几个重要信息：
 
-- 只有 odd harmonics：$1,3,5,\ldots$
+- 只有 odd harmonics： $1,3,5,\ldots$
 - 每个 harmonic 的 amplitude 按 $1/n$ 递减
 - 这个写法只用了 sine，是因为这个 square wave 关于原点对称，是奇函数
 
@@ -93,7 +93,7 @@ $$
 \omega=2\pi f.
 $$
 
-所以看到文献中使用 $f$、$\nu$、$\omega$ 时，需要先确认它用的是 frequency 还是 angular frequency。
+所以看到文献中使用 $f$、 $\nu$、 $\omega$ 时，需要先确认它用的是 frequency 还是 angular frequency。
 
 <br>
 
@@ -115,13 +115,13 @@ Fourier transform 的结果 $F(\omega)$ 本身还不是我们通常画出来的 
 
 Nieuwstadt et al. (2015) Chapter 9 提供了一个很适合大气湍流的角度：从 time correlation function 出发理解 spectrum。
 
-设 $u'(t)$ 是某个 turbulent fluctuation，且平均值为 0。考虑两个时刻 $t_1$、$t_2$ 上的值：
+设 $u'(t)$ 是某个 turbulent fluctuation，且平均值为 0。考虑两个时刻 $t_1$、 $t_2$ 上的值：
 
 $$
 \overline{u'(t_1)u'(t_2)}.
 $$
 
-如果过程是 stationary 的，那么这个 correlation 不依赖于 $t_1$、$t_2$ 的绝对位置，只依赖于时间差：
+如果过程是 stationary 的，那么这个 correlation 不依赖于 $t_1$、 $t_2$ 的绝对位置，只依赖于时间差：
 
 $$
 \tau=t_1-t_2.
@@ -137,8 +137,8 @@ $$
 
 这就是 autocorrelation function。它告诉我们：相隔 $\tau$ 的两个 fluctuation 之间还有多相似。
 
-- 当 $\tau=0$ 时，$R(0)=\overline{u'^2}$，即 variance
-- 当 $\tau$ 很大时，$R(\tau)$ 通常趋近于 0，说明相隔很久的 fluctuation 不再相关
+- 当 $\tau=0$ 时， $R(0)=\overline{u'^2}$，即 variance
+- 当 $\tau$ 很大时， $R(\tau)$ 通常趋近于 0，说明相隔很久的 fluctuation 不再相关
 - $R(\tau)$ 衰减得越慢，说明 signal 中越有 long time scale structure
 
 
@@ -220,4 +220,3 @@ python scripts/3_continuous_spectrum.py
 ![Gaussian function and numerical amplitude spectrum](figures/part03_continuous_spectrum.png)
 
 **Fig. 5.** Numerical Fourier transform of a sampled Gaussian function.
-
