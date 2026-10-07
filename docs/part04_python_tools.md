@@ -66,9 +66,9 @@ f = np.fft.fft(q, norm='forward')
 
 
 `np.fft.fft(x)` 返回的频率顺序不是从负频率到正频率，而是：
-\[
+$$
 0,\ 1,\ 2,\ldots,\frac{N}{2},\ -\frac{N}{2}+1,\ldots,-1
-\]
+$$
 
 对应的物理频率由 `np.fft.fftfreq` 给出：
 
@@ -97,13 +97,13 @@ amplitude_shifted = np.fft.fftshift(amplitude)
 plt.plot(freq_shifted, amplitude_shifted) # [-4., -3., -2., -1.,  0.,  1.,  2.,  3.]
 ```
 
-这里的关键是：DFT frequency index 是周期性的，满足 \(k\equiv k-N\)。因此对于 \(N=8\)：
+这里的关键是：DFT frequency index 是周期性的，满足 $k\equiv k-N$。因此对于 $N=8$：
 
-\[
+$$
 7\equiv 7-8=-1.
-\]
+$$
 
-所以 \(k=7\) 并不是高频信号，而是等价于 \(k=-1\)，也就是最低阶的负频率。真正达到 Nyquist frequency 的最高频率是 \(k=4\)。在 full two-sided `fftfreq` 里，Nyquist 项通常显示为 \(-4\)；在 one-sided `rfftfreq` 里，它显示为 \(+4\)。
+所以 $k=7$ 并不是高频信号，而是等价于 $k=-1$，也就是最低阶的负频率。真正达到 Nyquist frequency 的最高频率是 $k=4$。在 full two-sided `fftfreq` 里，Nyquist 项通常显示为 $-4$；在 one-sided `rfftfreq` 里，它显示为 $+4$。
 
 
 
@@ -136,15 +136,15 @@ np.allclose(X_full[: len(X_one)], X_one)
 
 `rfft` 只返回：
 
-\[
+$$
 0\le f\le f_N,
-\]
+$$
 
-其中 \(f_N\) 是 Nyquist frequency：
+其中 $f_N$ 是 Nyquist frequency：
 
-\[
+$$
 f_N=\frac{1}{2\Delta t}.
-\]
+$$
 
 这就是 one-sided spectrum 的常用计算方式。
 
@@ -166,11 +166,11 @@ amplitude[1:-1] *= 2
 
 需要注意：
 
-- \(f=0\) 是 mean，不乘以 2
-- 如果 \(N\) 为偶数，Nyquist frequency 也不乘以 2
+- $f=0$ 是 mean，不乘以 2
+- 如果 $N$ 为偶数，Nyquist frequency 也不乘以 2
 - 中间频率乘以 2
 
-所以代码中常见的 `amplitude[1:-1] *= 2` 适用于 \(N\) 为偶数的情况。更严谨的写法是：
+所以代码中常见的 `amplitude[1:-1] *= 2` 适用于 $N$ 为偶数的情况。更严谨的写法是：
 
 ```python
 amplitude = np.abs(X) / len(x)
@@ -202,7 +202,7 @@ else:
 x_anom = x - np.mean(x)
 ```
 
-否则 \(f=0\) 处的 mean component 可能很大，会压低其它频率成分在图中的可见性。
+否则 $f=0$ 处的 mean component 可能很大，会压低其它频率成分在图中的可见性。
 
 
 
@@ -215,9 +215,9 @@ Power spectrum 和 power spectral density 不完全一样。
 
 如果频率分辨率为：
 
-\[
+$$
 \Delta f=\frac{1}{N\Delta t},
-\]
+$$
 
 那么一种常见近似是：
 
@@ -268,9 +268,9 @@ plt.show()
 
 图中应该能看到两个 peak，分别接近：
 
-\[
+$$
 f=0.5,\qquad f=2.0.
-\]
+$$
 
 
 
@@ -280,11 +280,11 @@ f=0.5,\qquad f=2.0.
 
 常见检查包括：
 
-- 采样间隔 \(\Delta t\) 是否正确传给 `fftfreq` 或 `rfftfreq`
+- 采样间隔 $\Delta t$ 是否正确传给 `fftfreq` 或 `rfftfreq`
 - 是否需要先去除 mean 或 trend
 - 是否应该画 one-sided spectrum，而不是 two-sided spectrum
 - amplitude spectrum 是否正确处理了正负频率合并
-- 记录长度是否足够，频率分辨率 \(\Delta f=1/(N\Delta t)\) 是否满足需求
+- 记录长度是否足够，频率分辨率 $\Delta f=1/(N\Delta t)$ 是否满足需求
 - 采样频率是否足够高，Nyquist frequency 是否覆盖目标频率
 - 是否需要 window function 来降低 spectral leakage
 
@@ -302,7 +302,7 @@ NumPy FFT 的核心函数：
 
 实际分析时最推荐的流程是：
 
-1. 确认 \(\Delta t\)
+1. 确认 $\Delta t$
 2. 去均值或去趋势
 3. 用 `rfft` 和 `rfftfreq` 计算 one-sided spectrum
 4. 根据需求计算 amplitude、power 或 PSD

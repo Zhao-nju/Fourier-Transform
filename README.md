@@ -65,7 +65,7 @@ python scripts/2-spectrum.py
 
 Entry document: [docs/part03_function_ft.md](docs/part03_function_ft.md)
 
-Part 3 moves from Fourier series to continuous Fourier transform. It includes the square-wave harmonic expansion, the relationship between continuous functions and spectra, and the use of autocorrelation \(R(\tau)\) to understand spectrum in atmospheric turbulence.
+Part 3 moves from Fourier series to continuous Fourier transform. It includes the square-wave harmonic expansion, the relationship between continuous functions and spectra, and the use of autocorrelation $R(\tau)$ to understand spectrum in atmospheric turbulence.
 
 Reproduce the figures:
 
